@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import reduxThunk from 'redux-thunk'
+import Async from './middlewares/async'
 
 import App from './components/app'
 import Signin from './components/auth/signin'
@@ -15,7 +16,7 @@ import Welcome from './components/welcome'
 import reducers from './reducers'
 import { AUTH_USER } from './actions/types'
 
-const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
+const createStoreWithMiddleware = applyMiddleware(Async, reduxThunk)(createStore);
 const store = createStoreWithMiddleware(reducers)
 
 const token = localStorage.getItem('token')

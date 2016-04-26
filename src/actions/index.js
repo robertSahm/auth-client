@@ -5,11 +5,27 @@ import {
   UNAUTH_USER,
   AUTH_ERROR,
   SIGNUP_USER,
-  FETCH_MESSAGE
-  } from './types'
+  FETCH_MESSAGE,
+  FETCH_USERS
+} from './types'
 
 const ROOT_URL = 'http://localhost:3090'
 
+//
+// User Actions
+//
+export function fetchUsers() {
+  const request = axios.get('http://jsonplaceholder.typicode.com/users')
+
+  return {
+    type: FETCH_USERS,
+    payload: request
+  }
+}
+
+//
+// Auth Actions
+//
 export function signinUser({ email, password }) { 
   return function(dispatch) { // Redux thunk middleware using dispatch method
     // Submit email/password to the server
