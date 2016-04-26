@@ -1,14 +1,16 @@
-import { renderComponent , expect } from '../test_helper';
-import App from '../../src/components/app';
+import { renderComponent, expect} from '../test_helper'
+import App from '../../src/components/app'
 
-describe('App' , () => {
-  let component;
+// Use describe to group together similar tests
+describe('App', () => {
+  let component
 
   beforeEach(() => {
-    component = renderComponent(App);
-  });
+    component = renderComponent(App)
+  })
+  
+  it('shows a comment box', () => {
+    expect(component.find('.comment-box')).to.exist
+  })
 
-  it('renders something', () => {
-    expect(component).to.exist;
-  });
-});
+})
